@@ -2,10 +2,10 @@ name: "Terraform"
 
 on:
   workflow_call:
-  push:
-    branches:
-      - main
-  pull_request:
+#   push:
+#     branches:
+#       - main
+#   pull_request:
 
 jobs:
   terraform:
