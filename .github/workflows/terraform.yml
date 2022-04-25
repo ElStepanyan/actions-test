@@ -82,6 +82,10 @@ jobs:
   tfsec:
     name: tfsec sarif report
     runs-on: ubuntu-latest
+    env:
+      #custom_checks_dir: '.'
+      minimum_severity: 'MEDIUM'
+      config_file: ./tfsec.yml
 
     steps:
       - name: Clone repo
@@ -90,7 +94,14 @@ jobs:
       - name: tfsec
         uses: aquasecurity/tfsec-sarif-action@v0.1.0
         with:
+          working_directory: terraform/relevant
           sarif_file: tfsec.sarif
+          tfsec_version: latest
+          tfsec_args: --exclude-downloaded-modules \
+                      --config-file "${{ config_file }}" \
+                      --custom-check-dir "${{ env.custom_checks_dir }}" \
+                      --minimum-severity "${{ env.minimum_severity }}" \
+        #  github_token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Upload SARIF file
         uses: github/codeql-action/upload-sarif@v1
