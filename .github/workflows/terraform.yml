@@ -85,8 +85,8 @@ jobs:
     name: tfsec
     runs-on: ubuntu-latest
     env:
-      #custom_checks_dir: '.'
-      minimum_severity: 'MEDIUM'
+      # custom_checks_dir: '.'
+      minimum_severity: MEDIUM
       config_file: tfsec.yml
 
     steps:
@@ -101,9 +101,8 @@ jobs:
           version: latest
           soft_fail: false
           additional_args: --exclude-downloaded-modules 
-                      --config-file "${{ env.config_file }}" 
-                      --custom-check-dir "${{ env.custom_checks_dir }}" 
-                      --minimum-severity "${{ env.minimum_severity }}" 
+                      --config-file ${{ env.config_file }}
+                      --minimum-severity ${{ env.minimum_severity }}
 #         #  github_token: ${{ secrets.GITHUB_TOKEN }}
 
 #       - name: Upload SARIF file
