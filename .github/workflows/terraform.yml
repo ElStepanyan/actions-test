@@ -98,9 +98,9 @@ jobs:
         with:
           #working_directory: terraform/relevant
           #sarif_file: tfsec.sarif
-          tfsec_version: latest
+          version: latest
           soft_fail: false
-          tfsec_args: --exclude-downloaded-modules \
+          args: --exclude-downloaded-modules \
                       --config-file "${{ env.config_file }}" \
                       --custom-check-dir "${{ env.custom_checks_dir }}" \
                       --minimum-severity "${{ env.minimum_severity }}" \
