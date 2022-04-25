@@ -87,7 +87,7 @@ jobs:
     env:
       #custom_checks_dir: '.'
       minimum_severity: 'MEDIUM'
-      config_file: tfsec.yml
+      config_file: /github/workspace/tfsec.yml
 
     steps:
       - name: Clone repo
