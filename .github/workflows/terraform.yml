@@ -100,7 +100,7 @@ jobs:
           sarif_file: tfsec.sarif
           tfsec_version: latest
           tfsec_args: --exclude-downloaded-modules \
-                      --config-file "${{ config_file }}" \
+                      --config-file "${{ env.config_file }}" \
                       --custom-check-dir "${{ env.custom_checks_dir }}" \
                       --minimum-severity "${{ env.minimum_severity }}" \
         #  github_token: ${{ secrets.GITHUB_TOKEN }}
