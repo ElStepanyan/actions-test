@@ -103,10 +103,33 @@ jobs:
           additional_args: --exclude-downloaded-modules 
                       --config-file ${{ env.config_file }}
                       --minimum-severity ${{ env.minimum_severity }}
-#         #  github_token: ${{ secrets.GITHUB_TOKEN }}
+  tflint:
+    runs-on: ${{ matrix.os }}
 
-#       - name: Upload SARIF file
-#         uses: github/codeql-action/upload-sarif@v1
-#         with:
-#           # Path to SARIF file relative to the root of the repository
-#           sarif_file: tfsec.sarif
+    strategy:
+      matrix:
+        os: [ ubuntu-latest, macos-latest, windows-latest ]
+
+    steps:
+      - uses: actions/checkout@v2
+        name: Checkout source code
+
+      - uses: actions/cache@v2
+        name: Cache plugin dir
+        with:
+          path: ~/.tflint.d/plugins
+          key: ${{ matrix.os }}-tflint-${{ hashFiles('.tflint.hcl') }}
+
+      - uses: terraform-linters/setup-tflint@v1
+        name: Setup TFLint
+        with:
+          tflint_version: v0.29.0
+
+      - name: Show version
+        run: tflint --version
+
+      - name: Init TFLint
+        run: tflint --init
+
+      - name: Run TFLint
+        run: tflint -f compact
