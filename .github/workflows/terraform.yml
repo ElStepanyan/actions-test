@@ -123,10 +123,10 @@ jobs:
       - uses: terraform-linters/setup-tflint@v1
         name: Setup TFLint
         with:
-          tflint_version: v0.29.0
-
-      - name: Show version
-        run: tflint --version
+          tflint_version: v0.35.0
+      - uses: terraform-linters/tflint-load-config-action@v0
+        with:
+          source-repo: tflint-config
 
       - name: Init TFLint
         run: tflint --init
