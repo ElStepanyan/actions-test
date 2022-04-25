@@ -100,10 +100,10 @@ jobs:
           #sarif_file: tfsec.sarif
           version: latest
           soft_fail: false
-          additional_args: --exclude-downloaded-modules \
-                      --config-file "${{ env.config_file }}" \
-                      --custom-check-dir "${{ env.custom_checks_dir }}" \
-                      --minimum-severity "${{ env.minimum_severity }}" \
+          additional_args: --exclude-downloaded-modules 
+                      --config-file "${{ env.config_file }}" 
+                      --custom-check-dir "${{ env.custom_checks_dir }}" 
+                      --minimum-severity "${{ env.minimum_severity }}" 
 #         #  github_token: ${{ secrets.GITHUB_TOKEN }}
 
 #       - name: Upload SARIF file
