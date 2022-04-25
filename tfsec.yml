@@ -1,6 +1,5 @@
 {
   "severity_overrides": {
-    "aws-vpc-no-public-egress-sgr": "LOW", # we are using egress to the internet, so it shouldn't be a critical thing
-  },
+    "aws-s3-enable-versioning": "LOW", # test
   "exclude": []
 }
