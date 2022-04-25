@@ -96,7 +96,7 @@ jobs:
       - name: tfsec
         uses: aquasecurity/tfsec-sarif-action@v0.1.0
         with:
-          working_directory: terraform/relevant
+          #working_directory: terraform/relevant
           sarif_file: tfsec.sarif
           tfsec_version: latest
           tfsec_args: --exclude-downloaded-modules \
