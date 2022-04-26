@@ -44,6 +44,6 @@ jobs:
           push: true
           file: ./flask_app/Dockerfile
           tags: elstepanyan/flask_app:latest
-          context: {{defaultContext}}:flask_app
+          context: ./flask_app
 #          push: true
 #          tags: ${{secrets.DOCKERHUB_USERNAME}}/${{inputs.image_name}}:${{env.final_tag}}
