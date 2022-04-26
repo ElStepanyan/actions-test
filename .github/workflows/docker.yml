@@ -40,7 +40,7 @@ jobs:
         uses: docker/build-push-action@v2
         with:
           push: true
-          tags: elstepanyan/Flask_app:latest
+          tags: elstepanyan/flask_app:latest
 #          context: .
 #          push: true
 #          tags: ${{secrets.DOCKERHUB_USERNAME}}/${{inputs.image_name}}:${{env.final_tag}}
