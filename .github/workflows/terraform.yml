@@ -126,8 +126,8 @@ jobs:
           tflint_version: v0.35.0
       - uses: terraform-linters/tflint-load-config-action@v0
         with:
-          source-repo: ElStepanyan/actions-test/tflint-config
-          source-path: .tflint.hcl
+          source-repo: ElStepanyan/actions-test
+          source-path: tflint-config/.tflint.hcl
 
       - name: Init TFLint
         run: tflint --init
