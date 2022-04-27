@@ -11,7 +11,7 @@ jobs:
     steps:
       - name: Hello world action step
         id: hello
-        uses: ./.github/actions/test-action@v1
+        uses: test-action@v1
         with:
           who-to-greet: 'Elya'
       # Use the output from the `hello` step
