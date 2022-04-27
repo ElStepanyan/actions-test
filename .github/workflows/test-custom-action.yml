@@ -13,7 +13,7 @@ jobs:
 
       - name: Hello world action step
         id: hello
-        uses: ./.github/actions/Custom-Action@v1
+        uses: ./.github/actions/test-action
         with:
           who-to-greet: 'Elya'
       # Use the output from the `hello` step
