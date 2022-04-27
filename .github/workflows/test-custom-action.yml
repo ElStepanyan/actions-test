@@ -1,4 +1,7 @@
 name: "Custom-Action"
+
+concurrency: production
+
 on:
   push:
     branches:
