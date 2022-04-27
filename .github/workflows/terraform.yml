@@ -11,7 +11,7 @@ on:
 
 jobs:
   terraform:
-   # needs: [tfsec, tflint]
+    needs: [tfsec, tflint]
     name: "Terraform"
     runs-on: ubuntu-latest
     steps:
