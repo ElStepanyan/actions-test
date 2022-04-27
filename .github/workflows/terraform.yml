@@ -1,5 +1,5 @@
 name: "Terraform"
-
+concurrency: production
 on:
   workflow_call:
     secrets:
