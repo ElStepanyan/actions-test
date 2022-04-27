@@ -10,9 +10,10 @@ jobs:
     name: A job to say hello
     steps:
       - uses: actions/checkout@v2
+
       - name: Hello world action step
         id: hello
-        uses: ElStepanyan/actions-test/actions/Custom-Action@v1
+        uses: ./.github/actions/Custom-Action@v1
         with:
           who-to-greet: 'Elya'
       # Use the output from the `hello` step
