@@ -7,6 +7,10 @@ on:
         required: true
       AWS_SECRET_ACCESS_KEY:
         required: true
+    inputs:
+      config_file:
+        required: true
+        type: string
 
 
 jobs:
