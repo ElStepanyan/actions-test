@@ -46,7 +46,10 @@ jobs:
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
         id: plan
         if: github.event_name == 'pull_request'
-        run: terraform plan -no-color -input=false -var-file="application_tfvars/${{ matrix.env }}.tfvars" -var-file="infrastructure_tfvars/${{ matrix.env }}.tfvars" -out "${{ matrix.env }}.plan"
+        run: | 
+            ls -l
+            terraform plan -no-color -input=false -var-file="application_tfvars/${{ matrix.env }}.tfvars" -var-file="infrastructure_tfvars/${{ matrix.env }}.tfvars" -out "${{ matrix.env }}.plan"
+
         continue-on-error: true
 
       - uses: actions/github-script@v6
