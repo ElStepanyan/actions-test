@@ -7,13 +7,20 @@ on:
         required: true
       AWS_SECRET_ACCESS_KEY:
         required: true
+  push:
+    branches:
+      - 'main'
 jobs:
   terraform:
     needs: [tfsec, tflint]
     name: "Terraform"
+    env:
+      TF_VAR_allowed_account_id: ${{ secrets.ALLOWED_ACCOUNT_ID }}
     runs-on: ubuntu-latest
     environment: production
-
+    strategy:
+      matrix:
+        env: [ dev, stage, prod ]
     steps:
       - name: Checkout
         uses: actions/checkout@v3
@@ -39,7 +46,7 @@ jobs:
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
         id: plan
         if: github.event_name == 'pull_request'
-        run: terraform plan -no-color -input=false
+        run: terraform plan -no-color -input=false -var-file="application_tfvars/${{ matrix.env }}.tfvars" -var-file="infrastructure_tfvars/${{ matrix.env }}.tfvars" -out "${{ matrix.env }}.plan"
         continue-on-error: true
 
       - uses: actions/github-script@v6
@@ -98,7 +105,7 @@ jobs:
         uses: aquasecurity/tfsec-action@v1.0.0
         with:
           #working_directory: terraform/relevant
-          #sarif_file: tfsec.sarif
+        #sarif_file: tfsec.sarif
           version: latest
           soft_fail: false
           additional_args: --exclude-downloaded-modules 
