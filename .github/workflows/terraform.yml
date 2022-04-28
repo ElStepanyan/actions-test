@@ -1,5 +1,6 @@
 name: "Terraform"
-concurrency: production
+#concurrency: production
+concurrency: ci-${{ github.ref }}
 on:
   workflow_call:
     secrets:
@@ -13,6 +14,9 @@ jobs:
     name: "Terraform"
     runs-on: ubuntu-latest
     environment: production
+    defaults:
+      run:
+        working-directory: ${{ env.tf_actions_working_dir }}
     steps:
       - name: Checkout
         uses: actions/checkout@v3

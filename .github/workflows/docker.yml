@@ -1,7 +1,7 @@
 name: "Docker"
 
-concurrency: production
-
+#concurrency: production
+concurrency: ci-${{ github.ref }}
 on:
   push:
     branches:

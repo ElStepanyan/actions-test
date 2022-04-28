@@ -1,6 +1,7 @@
 name: "Custom-Action"
 
-concurrency: production
+#concurrency: production
+concurrency: ci-${{ github.ref }}
 
 on:
   push:
