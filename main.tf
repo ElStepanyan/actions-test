@@ -15,7 +15,7 @@ resource "aws_s3_bucket" "bucket" {
   bucket = "dsfbejafkcjeas"
 
   tags = {
-    Name        = "My bucket"
+    Name        = "${upper(var.Environment)}-S3"
     Environment = var.Environment
   }
 }
