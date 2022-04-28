@@ -14,8 +14,8 @@ jobs:
   terraform:
     needs: [tfsec, tflint]
     name: "Terraform"
-    env:
-      TF_VAR_allowed_account_id: ${{ secrets.ALLOWED_ACCOUNT_ID }}
+#    env:
+#      TF_VAR_allowed_account_id: ${{ secrets.ALLOWED_ACCOUNT_ID }}
     runs-on: ubuntu-latest
     environment: production
     strategy:
